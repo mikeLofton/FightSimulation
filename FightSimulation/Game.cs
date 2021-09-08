@@ -32,6 +32,8 @@ namespace FightSimulation
             {
                 Update();
             }
+
+            End();
         }
 
         void Start()
@@ -66,6 +68,11 @@ namespace FightSimulation
           
         }
 
+        void End()
+        {
+            Console.WriteLine("Guhbah Fren");
+        }
+
         void ResetCurrentMonsters()
         {
             currentMonsterIndex = 0;
@@ -78,20 +85,27 @@ namespace FightSimulation
 
         void UpdateCurrentScene()
         {
-            if (currentScene == 0)
+            switch (currentScene)
             {
-                DisplayStartMenu();
+                case 0:
+                    DisplayStartMenu();
+                    break;
+
+                case 1:
+                    Battle();
+                    UpdateCurrentMonsters();
+                    Console.ReadKey();
+                    break;
+
+                case 2:
+                    DisplayRestartMenu();
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid scene index");
+                    break;
             }
-            if (currentScene == 1)
-            {
-                Battle();
-                UpdateCurrentMonsters();
-                Console.ReadKey(true);              
-            }
-            if (currentScene == 2)
-            {
-                DisplayRestartMenu();
-            }
+         
         }
 
         /// <summary>
