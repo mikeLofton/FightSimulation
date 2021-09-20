@@ -337,17 +337,6 @@ namespace FightSimulation
             return damageTaken;
         }
 
-        float CalculateDamage(float attack, float defense)
-        {
-            float damage = attack - defense;
-            if (damage <= 0)
-            {
-                damage = 0;
-            }
-
-            return damage;
-        }
-
         float CalculateDamage(Monster attacker, Monster defender)
         {
             return attacker.attack - defender.defense;
